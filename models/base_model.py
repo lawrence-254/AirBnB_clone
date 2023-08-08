@@ -3,6 +3,7 @@
 
 import uuid
 from datetime import datetime
+from models.engine.file_storage import FileStorage
 
 
 class BaseModel():
@@ -22,6 +23,8 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            """fule storage"""
+            storage.new(self)
 
     """used to print info"""
     def __str__(self):
@@ -32,6 +35,8 @@ class BaseModel():
     """
     def save(self):
         self.updated_at = datetime.now()
+        """file sorage"""
+        storage.save()
 
     """returns a dictionary"""
     def to_dict(self):
