@@ -3,7 +3,7 @@
 
 import uuid
 from datetime import datetime
-from models.__init__ import storage
+import models
 
 
 class BaseModel():
@@ -13,9 +13,7 @@ class BaseModel():
         """check if kwargs is empty or not"""
         if kwargs:
             for key, value in kwargs.items():
-                if key == "__class__":
-                    continue
-                elif key == "created_at" or key == "updated_at":
+                if key == "created_at" or key == "updated_at":
                     self.__dict__[key] = datetime.fromisoformat(value)
                 else:
                     self.__dict__[key] = value
@@ -24,7 +22,7 @@ class BaseModel():
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             """file storage new instance"""
-            storage.new(self)
+            models.storage.new(self)
 
     """used to print info"""
     def __str__(self):
@@ -36,7 +34,7 @@ class BaseModel():
     def save(self):
         self.updated_at = datetime.now()
         """file storage save"""
-        storage.save(self)
+        models.storage.save()
 
     """returns a dictionary"""
     def to_dict(self):
