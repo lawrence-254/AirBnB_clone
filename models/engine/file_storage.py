@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """serializes instances JSON file and deserializes JSON to instance"""
 
-import models
 import json
+from models import base_model
 
 
 class FileStorage():
@@ -26,8 +26,8 @@ class FileStorage():
             with open(self.__file_path, "r", encoding="utf-8" ) as fil:
                 obj_dict = json.load(fil)
                 for ob in obj_dict.values():
-                    Cl_tem_name = ob["__class__"]
+                    cls_name = ob["__class__"]
                     del ob["__class__"]
-                    self.new(eval(f"models.{Cl_tem_name}")(**ob))
+                    self.new(eval(f"base_model.{cls_name}")(**ob))
         except FileNotFoundError:
-            pass
+            return
