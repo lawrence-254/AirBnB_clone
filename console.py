@@ -6,6 +6,7 @@ import cmd
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
+    __baseClass = {"BaseModel",}
 
     def do_quit(self, arg):
         """Quit command to exit the program
@@ -26,7 +27,12 @@ class HBNBCommand(cmd.Cmd):
         """ Creates a new instance of BaseModel,  saves it as JSON,
         and prints the id
         """
+        args = arg.split()
+        largs = len(args)
 
+        if largs == 0:
+            """checks if argument is privided after create method is called"""
+            print("**class name missing**")
 
 
 if __name__ == '__main__':
