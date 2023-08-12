@@ -18,12 +18,12 @@ class FileStorage():
 
     def save(self):
         with open(self.__file_path, "w", encoding="utf-8") as fil:
-            dic = {k : v.to_dict() for k, v in self.__objects.items()}
+            dic = {k: v.to_dict() for k, v in self.__objects.items()}
             json.dump(dic, fil)
 
     def reload(self):
         try:
-            with open(self.__file_path, "r", encoding="utf-8" ) as fil:
+            with open(self.__file_path, "r", encoding="utf-8") as fil:
                 obj_dict = json.load(fil)
                 for ob in obj_dict.values():
                     cls_name = ob["__class__"]
