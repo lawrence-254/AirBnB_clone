@@ -2,6 +2,7 @@
 """a program that contains the entry point of the command interpreter"""
 
 import cmd
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
@@ -31,8 +32,14 @@ class HBNBCommand(cmd.Cmd):
         largs = len(args)
 
         if largs == 0:
-            """checks if argument is privided after create method is called"""
+            """checks If the class name is missing"""
             print("**class name missing**")
+        elif args[0] not in self.__baseClass:
+            """checks If the class name doesn’t exist"""
+            print("** class doesn't exist **")
+        else:
+            """creates new instance of base model"""
+
 
 
 if __name__ == '__main__':
