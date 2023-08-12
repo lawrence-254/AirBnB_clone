@@ -34,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
         if largs == 0:
             """checks If the class name is missing"""
             print("**class name missing**")
-        elif args[0] not in self.__baseClass:
+        elif args[0] not in HBNBCommand.__baseClass:
             """checks If the class name doesn’t exist"""
             print("** class doesn't exist **")
         else:
