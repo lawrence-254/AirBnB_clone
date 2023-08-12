@@ -3,7 +3,7 @@
 serializes instances JSON file and deserializes JSON to instance
 """
 import json
-from models import base_model
+from models.base_model import BaseModel
 
 
 class FileStorage():
@@ -41,21 +41,11 @@ class FileStorage():
     def reload(self):
         """Deserializes a JSON string into a dictionary of objects"""
         try:
-            FileStorage.__objects.clear()
-            with open('file.json', 'r') as f:
-                all_obj = json.load(f)
-                for key, val in all_obj.items():
-                    class_name = val.get("__class__")
-                    if class_name is not None:
-                        class_type = globals().get(class_name)
-                        if class_type is not None:
-                            instance = class_type(**val)
-                            FileStorage.__objects[key] = instance
-                        else:
-                            print(f"Class {class_name} not found")
-                    else:
-                        print(f"No class information found for object with key {key}")
+            path = self.__file_path
+            with open(path, mode="r", encoding="utf-8") as file_obj:
+                data_strm = json.load(file_obj)
+                for key, val in data_strm.items():
+                    class_name = key.split(".")[0]
+                    self.new(eval(class_name + "(**val)"))
         except FileNotFoundError:
-            return
-        except json.JSONDecodeError as e:
-            print("JSON Decode Error:", e)
+            pass
