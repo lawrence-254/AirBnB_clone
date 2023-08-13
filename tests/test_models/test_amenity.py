@@ -2,7 +2,7 @@
 '''tests cases for class amenity'''
 
 import unittest
-from models.amenity import Amenity
+from ..models.amenity import Amenity
 from models.base_model import BaseModel
 
 
