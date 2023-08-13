@@ -2,13 +2,15 @@
 """a program that contains the entry point of the command interpreter"""
 
 import cmd
+import re
+import sys
 from models import storage
 from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
-    __baseClass = {"BaseModel",}
+    __baseClass = {"BaseModel"}
 
     def do_quit(self, arg):
         """Quit command to exit the program
@@ -121,8 +123,8 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) == 0:
             print("** class name missing **")
             return
-        pattern = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
-        a_match = re.search(regx, args)
+        ptn = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
+        a_match = re.search(ptn, args)
         uid_match = a_match.group(2)
         cls_name_match = a_match.group(1)
         attr_match = a_match.group(3)
@@ -144,7 +146,8 @@ class HBNBCommand(cmd.Cmd):
                                     val_match = val_match.replace('"', '')
                                     attrs = attributes[cls_name_match]
                                     if attr_match in attrs:
-                                        val_match = attrs[attr_match](val_match)
+                                        val_match = attrs[attr_match](
+                                                val_match)
                                     elif datatype:
                                         try:
                                             val_match = datatype(val_match)
