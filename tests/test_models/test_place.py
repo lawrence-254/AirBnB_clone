@@ -55,6 +55,6 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(new_place.amenity_ids, str(self.new_amenity.id))
         self.assertIsInstance(new_place.amenity_ids, str)
 
+
 if __name__ == '__main__':
     unittest.main()
-

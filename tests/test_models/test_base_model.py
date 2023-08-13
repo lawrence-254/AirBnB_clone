@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ Defines test cases for BaseModel class and its attributes """
 
 import unittest
@@ -103,6 +104,7 @@ class TestBaseModelClass(unittest.TestCase):
             if key == '__class__':
                 continue
             self.assertIn(key, vars_dict)
+
 
 if __name__ == '__main__':
     unittest.main()
