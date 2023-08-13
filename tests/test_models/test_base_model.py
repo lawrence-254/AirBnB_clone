@@ -103,3 +103,6 @@ class TestBaseModelClass(unittest.TestCase):
             if key == '__class__':
                 continue
             self.assertIn(key, vars_dict)
+
+if __name__ == '__main__':
+    unittest.main()
