@@ -46,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
             """checks If the class name is missing"""
             print("**class name missing**")
             return
-        elif args[0] not in HBNBCommand.__baseClass.all():
+        elif args[0] not in HBNBCommand.__baseClass:
             """checks If the class name doesn’t exist"""
             print("** class doesn't exist **")
             return
@@ -68,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
         if largs == 0:
             print("** class name missing **")
             return
-        elif args[0] not in HBNBCommand.__baseClass.all():
+        elif args[0] not in HBNBCommand.__baseClass:
             print("** class doesn't exist **")
             return
         else:
@@ -90,7 +90,7 @@ class HBNBCommand(cmd.Cmd):
         if largs == 0:
             print("** class name missing **")
             return
-        elif args[0] not in HBNBCommand.__baseClass.all():
+        elif args[0] not in HBNBCommand.__baseClass:
             print("** class doesn't exist **")
             return
         else:
@@ -113,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
         inst_list = []
         args = arg.split(" ")
         if arg != "":
-            if args[0] in HBNBCommand.__baseClass.all():
+            if args[0] in HBNBCommand.__baseClass:
                 for key, val in storage.all().items():
                     if type(val).__name__ == arg[0]:
                         inst_list.append(str(val))
@@ -138,7 +138,7 @@ class HBNBCommand(cmd.Cmd):
         attr_match = a_match.group(3)
         val_match = a_match.group(4)
         if a_match:
-            if cls_name_match in HBNBCommand.__baseClass.all():
+            if cls_name_match in HBNBCommand.__baseClass:
                 if uid_match:
                     id = "{}.{}".format(cls_name_match, uid_match)
                     if id in storage.all():
