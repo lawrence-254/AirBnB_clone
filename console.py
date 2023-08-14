@@ -10,7 +10,7 @@ from models.base_model import BaseModel
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
-    __baseClass = {BaseModel,}
+    __baseClass = {BaseModel}
 
     def do_quit(self, arg):
         """Quit command to exit the program
