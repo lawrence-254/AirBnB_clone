@@ -1,0 +1,26 @@
+section
+{
+  height: 70px;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  position: relative;
+}
+button {
+  font-size: 18px;
+  background-color: #ff5a5f;
+  color: #ffffff;
+  height: 48px;
+  width: 20%;
+  border: none;
+  top: 11px;
+  right: 30px;
+  position: absolute;
+  border-radius: 4px;
+
+  opacity: 1;
+}
+button:hover {
+  opacity: 0.9;
+}
